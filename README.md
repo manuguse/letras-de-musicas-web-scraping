@@ -28,7 +28,7 @@ Clone este repositório:
 
 Instale as dependências necessárias:
 
-    pip install requests
+    pip install requests==2.26.0
 
 Execute o script main.py:
 
