@@ -1,8 +1,6 @@
 import requests
 from html.parser import HTMLParser
 from threading import Thread, Lock
-from time import time
-
 
 class SongsParser(HTMLParser):
     """ 
@@ -106,16 +104,18 @@ def get_songs_urls():
 def get_songs_dict():
     title_and_lyrics = dict()
     lock = Lock()  # Para garantir acesso seguro ao dicionário
-    def fetch_lyrics(url, title):
-        nonlocal title_and_lyrics
-        lyrics = get_lyrics(url)
-        with lock:
-            title_and_lyrics[title] = lyrics
+    def fetch_lyrics(chunk):
+        for title, url in chunk:
+            lyrics = get_lyrics(url)
+            with lock:
+                title_and_lyrics[title] = lyrics
     
-    songs_urls = get_songs_urls().songs.items()
+    songs_urls = list(get_songs_urls().songs.items())
+    chunk_size = len(songs_urls) // 20
+    chunks = [songs_urls[i:i + chunk_size] for i in range(0, len(songs_urls), chunk_size)]
     threads = []
-    for title, url in songs_urls:
-        thread = Thread(target=fetch_lyrics, args=(url, title))
+    for chunk in chunks:
+        thread = Thread(target=fetch_lyrics, args=(chunk,))
         thread.start()
         threads.append(thread)
     
