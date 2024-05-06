@@ -1,4 +1,4 @@
-import taylor_scrapping as ts
+import lyrics_scrapping as ts
 import time
 
 def main():
