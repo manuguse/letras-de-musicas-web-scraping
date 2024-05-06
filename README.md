@@ -14,7 +14,7 @@ Este projeto consiste em um script Python que utiliza técnicas de Web Scraping 
 
 3. **Processamento Paralelo:**
 
-    Utiliza threads para processamento paralelo, otimizando o tempo de extração de dados. Para a minha máquina, houve um speedup de aproximadamente **5x**.
+    Utiliza threads para processamento paralelo, otimizando o tempo de extração de dados.
 
 4. **Exportar Dados:**
 
