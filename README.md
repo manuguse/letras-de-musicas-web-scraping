@@ -4,7 +4,7 @@ Este projeto consiste em um script Python que utiliza técnicas de Web Scraping 
 
 ## Funcionalidades
 
-1. **Extrair Títulos das Músicas:** 
+1. **Extrair Títulos das Músicas:**
 
     O script percorre uma página de discografia de um artista específico e extrai os títulos das músicas listadas.
 
