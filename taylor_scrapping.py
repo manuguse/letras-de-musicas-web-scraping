@@ -123,13 +123,3 @@ def get_songs_dict():
         thread.join()
 
     return title_and_lyrics
-
-
-def main():
-    title_and_lyrics = get_songs_dict()
-    write_lyrics(title_and_lyrics)
-    write_songs_titles(title_and_lyrics.keys())
-    print('processo finalizado')
-     
-if __name__ == '__main__':
-    main()
